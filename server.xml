@@ -9,7 +9,8 @@
         httpPort="9080"
         httpsPort="9443" />
 
-  <quickStartSecurity userName="${env.USERNAME}" userPassword="${env.PASSWORD}"/>
+  <keyStore id="defaultKeyStore" password="mpKeystore"/>
+  <mpMetrics authentication="false"/>
 
   <webApplication location="schedule.war" contextRoot="/"/>
 
