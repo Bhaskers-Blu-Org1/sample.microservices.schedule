@@ -89,28 +89,12 @@
 			<artifactId>demo-bootstrap</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.microprofile/microprofile -->
 		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
+			<groupId>org.eclipse.microprofile</groupId>
 			<artifactId>microprofile</artifactId>
-			<scope>provided</scope>
-			<version>2016.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.microprofile.config</groupId>
-			<artifactId>microprofile-config-api</artifactId>
-			<version>1.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.microprofile.metrics</groupId>
-			<artifactId>microprofile-metrics-api</artifactId>
-			<version>1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.microprofile.health</groupId>
-			<artifactId>microprofile-health-api</artifactId>
-			<version>1.0</version>
+			<version>2.1</version>
+			<type>pom</type>
 			<scope>provided</scope>
 		</dependency>
     </dependencies>

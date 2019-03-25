@@ -24,7 +24,6 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -39,6 +38,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Metric;
@@ -87,13 +87,23 @@ public class ScheduleResource {
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
 
+    /**
+     * Making returning of all schedules slow.
+     * @return
+     */
     @GET
     @Path("/all")
     @Timed
     @Metric(name="io.microprofile.showcase.schedule.resources.ScheduleResource.allSchedules.Metric",tags="app=schedule")
+    @Timeout(100)
     public Response allSchedules() {
         final List<Schedule> allSchedules = scheduleDAO.getAllSchedules();
         final GenericEntity<List<Schedule>> entity = buildEntity(allSchedules);
+        try {
+            Thread.sleep(102);
+        } catch (InterruptedException e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         return Response.ok(entity).build();
     }
 
