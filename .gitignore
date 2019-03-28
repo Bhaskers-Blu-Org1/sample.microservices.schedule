@@ -10,4 +10,4 @@ target/**
 /build/
 /bin/
 /.settings/
-
+.idea
