@@ -88,7 +88,7 @@ public class ScheduleResource {
     }
 
     /**
-     * Making returning of all schedules slow.
+     * Making returning of all slow schedules.
      * @return
      */
     @GET
