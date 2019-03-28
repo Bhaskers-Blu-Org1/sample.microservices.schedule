@@ -151,7 +151,7 @@ public class ScheduleResource {
     @Path("/updateHealthStatus")
     @Produces(TEXT_PLAIN)
     @Consumes(TEXT_PLAIN)
-    @Counted(name="io.microprofile.showcase.schedule.resources.ScheduleResource.updateHealthStatus.monotonic.absolute(true)",monotonic=true,absolute=true,tags="app=vote")
+    @Counted(name="io.microprofile.showcase.schedule.resources.ScheduleResource.updateHealthStatus.monotonic.absolute",monotonic=true,absolute=true,tags="app=vote")
     public void updateHealthStatus(@QueryParam("isAppDown") Boolean isAppDown) {
     	healthCheckBean.setIsAppDown(isAppDown);
     }
