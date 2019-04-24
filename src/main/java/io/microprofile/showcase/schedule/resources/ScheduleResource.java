@@ -95,16 +95,24 @@ public class ScheduleResource {
     @Path("/all")
     @Timed
     @Metric(name="io.microprofile.showcase.schedule.resources.ScheduleResource.allSchedules.Metric",tags="app=schedule")
-    @Timeout(100)
     public Response allSchedules() {
         final List<Schedule> allSchedules = scheduleDAO.getAllSchedules();
         final GenericEntity<List<Schedule>> entity = buildEntity(allSchedules);
+        return Response.ok(entity).build();
+    }
+
+    @GET
+    @Path("/allWithTimeout")
+    @Timed
+    @Metric(name="io.microprofile.showcase.schedule.resources.ScheduleResource.allSchedules.Metric",tags="app=schedule")
+    @Timeout(3000)
+    public Response allSchedulesWithTimeout() {
         try {
-            Thread.sleep(102);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(entity).build();
+        return Response.ok().build();
     }
 
     @GET
